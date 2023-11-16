@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+.container{
+    background:#28c17e ;
+    text-align: center;
+
+}
+
+.container h1{
+    font-weight:600 ;
+    padding: 1rem;
+}
+
+.editor{
+    background: #252744;
+    text-align: start;
+    display: flex;
+    padding: 1rem;
+
+}
+
+.left, .right{
+   flex-basis: 50%;
+   padding: 10px;
+}
+
+label{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+label i{
+    padding-right: 5px;
+}
+
+textarea{
+    width: 100%;
+    height: 300px;
+    background: #000000a1;
+    color: white;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+iframe{
+    width: 100%;
+    height: 95%;
+    background: #fff;
+    border: 0;
+    outline: 0;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <section class="container">
+        <h1>Code Editor</h1>
+
+        <div class="editor">
+
+
+            <div class="left">
+                <label for="">HTML</label>
+                <textarea onkeyup="run()" spellcheck="false" id="html-code"></textarea>
+            
+            
+                <label for="">CSS</label>
+                <textarea onkeyup="run()" spellcheck="false" id="css-code"></textarea>
+            
+            
+                <label for="">JavaScript</label>
+                <textarea onkeyup="run()" spellcheck="false" id="js-code"></textarea>
+            </div>
+
+
+            <div class="right">
+                    <label for="">Output</label>
+                    <iframe id="output"></iframe>
+            </div>
+        </div>
+
+    </section>
+    
+
+    <script>
+        function run(){
+            let htmlcode = document.getElementById("html-code");
+            let csscode = document.getElementById("css-code");
+            let jscode = document.getElementById("js-code");
+
+            let output = document.getElementById("output");
+
+
+            output.contentDocument.body.innerHTML = htmlcode.value + "<style>" + csscode.value + "</style>";
+            output.contentWindow.eval(jscode.value);
+        }
+    </script>
+</body>
+</html>

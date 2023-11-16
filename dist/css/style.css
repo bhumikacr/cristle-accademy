@@ -1,0 +1,10 @@
+.carow{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    position: fixed; z-index: 100000; background-color: white;
+}
+
+.casticky{
+    position: fixed;
+}
